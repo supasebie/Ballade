@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210318164434_UserPassHashSalt")]
+    [Migration("20210323020159_UserPassHashSalt")]
     partial class UserPassHashSalt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
