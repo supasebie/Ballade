@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -13,19 +13,17 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private toastr: ToastrService
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {}
 
   register() {
     this.accountService.register(this.model).subscribe(
-      (response) => {
-        console.log(response);
-      },
+      (response) => {},
       (error) => {
         console.log(error);
-        this.toastr.error('Error during registration');
+        this.snackBar.open(error);
       }
     );
     this.cancel();

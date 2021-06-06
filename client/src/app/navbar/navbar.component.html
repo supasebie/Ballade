@@ -1,0 +1,38 @@
+<div class="mat-elevation-z6">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row class="mat-button-toolbar">
+      <button mat-flat-button color="primary" routerLink="/">BreakDown</button>
+      <ng-container *ngIf="accountService.currentUser$ | async">
+          <button mat-button routerLink="/members">Members</button>
+          <button mat-button routerLink="/lists">Lists</button>
+          <button mat-button routerLink="/messages">Messages</button>
+      </ng-container>
+
+      <span class="tool-space"></span>
+
+
+      <ng-container *ngIf="(accountService.currentUser$ | async) as user">
+        <div>
+          <button
+            mat-fab
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <buttton> Welcome {{ user.username | titlecase }} </buttton>
+        </div>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>manage_accounts</mat-icon>
+            <span>Edit Profile</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

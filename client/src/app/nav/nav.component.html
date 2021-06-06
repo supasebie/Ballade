@@ -3,7 +3,7 @@
     <a routerLink="/" class="navbar-brand" href="#">Ballade Skeleton</a>
 
     <ul class="navbar-nav mr-auto">
-      <ng-container *ngIf="accountService.currentUser$ | async">
+      <ng-container>
         <li class="nav-item">
           <a
             routerLink="/members"
@@ -34,10 +34,9 @@
       </ng-container>
     </ul>
 
-    <div *ngIf="(accountService.currentUser$ | async) as user" class="btn-group" dropdown>
+    <div *ngIf="(accountService.currentUser$ | async) as user" class="btn-group">
       <button
         id="button-basic"
-        dropdownToggle
         type="button"
         class="btn nav-item dropdown-toggle"
         aria-controls="dropdown-basic"
@@ -47,7 +46,6 @@
 
       <ul
         id="dropdown-basic"
-        *dropdownMenu
         class="dropdown-menu"
         role="menu"
         aria-labelledby="button-basic"
@@ -63,7 +61,7 @@
 
     <form
       *ngIf="(accountService.currentUser$ | async) === null"
-      #loginForm="ngForm"
+      
       class="d-flex"
       (ngSubmit)="login()"
       autocomplete="off"

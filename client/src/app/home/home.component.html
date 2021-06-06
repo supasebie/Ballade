@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<!-- <div class="container mt-5">
   <div *ngIf="!registerMode" style="text-align: center">
     <h1>Find your dream job in the trimming industry</h1>
     <p class="lead">
@@ -19,4 +19,48 @@
       </div>
     </div>
   </div>
+</div> -->
+<div fxLayout="row" fxLayoutAlign="start none" class="jumbotron">
+  <div fxFlex="5"></div>
+  <mat-card fxFlex="grow" class="card-bg">
+    <mat-card-content>
+      <div fxLayout="row" class="innerTwo">
+        <!-- column start -->
+
+        <div fxLayout="column" fxFlex="60">
+          <h4>BASED ON OVER LOTS 1M BLUNTS SMOKED</h4>
+          <h1>In-demand careers</h1>
+          <div class="innerMargin">
+            <p class="innerTitle">1. Marijuana trimming industry</p>
+            <p class="innerText">
+              Jobs in the trimming industry are the most sought after and
+              coveted jobs in the united states. This new economic industry is
+              surging with potential talent and eager minds. Trimmers are ranked
+              #2 in job satisfaction among all job ever queried by the US
+              Census.
+            </p>
+            <div class="buttonPadding">
+              <ng-container
+                *ngIf="(this.accountService.currentUser$ | async) === null"
+              >
+                <button mat-raised-button routerLink="/login-register">
+                  Learn more
+                </button>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <!-- column end -->
+
+        <!-- column start -->
+        <div fxFlex="35">
+          <div class="absolute">
+            <img class="test" src="assets/img/card.webp" />
+          </div>
+        </div>
+        <!-- column end -->
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div fxFlex="5"></div>
 </div>

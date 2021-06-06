@@ -1,0 +1,78 @@
+.jumbotron {
+  padding-top: 1%;
+}
+
+.box1 {
+  height: 100px;
+  width: 25%;
+}
+
+.box2 {
+  height: 100px;
+  width: 75%;
+}
+
+.innerTwo {
+  padding: 3%;
+}
+
+.innerText {
+  font-family: "Helvetica Neue",Helvetica,Arial,"Liberation Sans",Roboto,Noto,sans-serif;
+  font-size: 20px;
+  color: rgb(72, 72, 72);
+}
+
+.innerMargin {
+  padding-top: 5%;
+  padding-right: 7%;
+}
+
+.innerTitle {
+  font-family: "Helvetica Neue","Helvetica","Arial","Liberation Sans","Roboto","Noto",sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inherit {
+  position: inherit;
+}
+
+.relative {
+  position: relative;
+}
+
+.card-bg {
+  background-color: #F6F2EE;
+}
+
+.test {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+h4 {
+  font-size: 0.875rem;
+  line-height: 1.43;
+  font-weight: 700;
+  color: #243f8f;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 1.875rem;
+    line-height: 1.13;
+    -webkit-letter-spacing: -0.004em;
+    -moz-letter-spacing: -0.004em;
+    -ms-letter-spacing: -0.004em;
+    letter-spacing: -0.004em;
+    font-weight: 700;
+}
+
+.buttonPadding {
+  padding-top: 5%;
+}
