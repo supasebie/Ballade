@@ -32,3 +32,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-typography {
   background-color: rgb(238, 242, 246);
 }
+
+.gallery-wrapper {
+  text-align: center;
+  margin-top: 50px;
+}

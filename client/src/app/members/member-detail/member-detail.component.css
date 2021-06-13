@@ -1,0 +1,10 @@
+.photoContainer {
+  width: 200px;
+  height: 200px;
+}
+
+.ngx-gallery {
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}

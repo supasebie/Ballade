@@ -1,0 +1,39 @@
+<mat-card class="mat-elevation-z4">
+  <mat-card-header>
+    <mat-card-title>{{ member.knownAs }}</mat-card-title>
+  </mat-card-header>
+
+  <div class="mat-card-wrapper">
+    <img class="card-image" mat-card-image src="{{ member.photoUrl || './assets/img/user.png' }}" />
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-evenly"
+      class="member-icons animate"
+    >
+      <button
+        mat-fab
+        color="accent"
+        aria-label="Example icon button with a bookmark icon"
+        routerLink="/members/{{ member.username }}"
+      >
+        <mat-icon>person</mat-icon>
+      </button>
+      <button
+        mat-fab
+        color="warn"
+        aria-label="Example icon button with a home icon"
+      >
+        <mat-icon>home</mat-icon>
+      </button>
+      <button mat-fab aria-label="Example icon button with a heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <mat-card-content style="min-height: 50px">
+    <p>
+      {{ member.interests }}
+    </p>
+  </mat-card-content>
+</mat-card>

@@ -1,1 +1,13 @@
-<p>member-list works!</p>
+<div class="container" fxLayout="row wrap">
+  <div
+  fxFlex="25"
+  fxFlex.md="33"
+  fxFlex.sm="50"
+  fxFlex.xs="100"
+  style="padding: 5px;"
+  *ngFor="let member of members">
+  <div class="container" fxLayout="column">
+    <app-member-card [member]="member"></app-member-card>
+  </div>
+  </div>
+</div>

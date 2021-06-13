@@ -23,6 +23,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LoginComponent } from './login/login.component';
 import { LoginRegisterComponent } from './auth/login-register/login-register.component';
+import { MemberCardComponent } from './members/member-card/member-card.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { LoginRegisterComponent } from './auth/login-register/login-register.com
     ServerErrorComponent,
     NavbarComponent,
     LoginComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    MemberCardComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,16 @@ import { LoginRegisterComponent } from './auth/login-register/login-register.com
     LayoutModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
