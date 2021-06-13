@@ -10,6 +10,7 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { LoginRegisterComponent } from './auth/login-register/login-register.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,10 +21,10 @@ const routes: Routes = [
     children: [
       {
         path: 'members',
-        component: MemberListComponent,
-        canActivate: [AuthGuard]
+        component: MemberListComponent
       },
       { path: 'members/:username', component: MemberDetailComponent },
+      { path: 'member/edit', component: MemberEditComponent },
       { path: 'lists', component: ListsComponent },
       { path: 'messages', component: MessagesComponent }
     ]

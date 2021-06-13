@@ -23,7 +23,7 @@
           <buttton> Welcome {{ user.username | titlecase }} </buttton>
         </div>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>
+          <button routerLink="/member/edit" mat-menu-item>
             <mat-icon>manage_accounts</mat-icon>
             <span>Edit Profile</span>
           </button>

@@ -1,15 +1,16 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+// Bulk imports, angular material, npm packages, etc.
+import { AngularCommonModule } from './_modules/angular-common.module';
+import { AngularMaterialModule } from './_modules/angular-material.module';
+import { NpmModule } from './_modules/npm.module';
 
+// Providers and routes
+import { AppRoutingModule } from './app-routing.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+// Components
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
-import { SharedModule } from './_modules/shared.module';
-import { AppRoutingModule } from './app-routing.module';
 import { ListsComponent } from './lists/lists.component';
 import { RegisterComponent } from './register/register.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -20,11 +21,13 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LayoutModule } from '@angular/cdk/layout';
 import { LoginComponent } from './login/login.component';
 import { LoginRegisterComponent } from './auth/login-register/login-register.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -42,17 +45,14 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     NavbarComponent,
     LoginComponent,
     LoginRegisterComponent,
-    MemberCardComponent
+    MemberCardComponent,
+    MemberEditComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    CommonModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    SharedModule,
-    LayoutModule
+    AngularCommonModule,
+    AngularMaterialModule,
+    NpmModule
   ],
   providers: [
     {
