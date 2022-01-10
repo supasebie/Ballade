@@ -4,7 +4,7 @@ import { ThemePalette } from '@angular/material/core';
 @Component({
   selector: 'app-login-register-component',
   templateUrl: './login-register.component.html',
-  styleUrls: ['./login-register.component.css']
+  styleUrls: ['./login-register.component.scss']
 })
 export class LoginRegisterComponent implements OnInit {
   background: ThemePalette = undefined;

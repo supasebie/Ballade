@@ -34,14 +34,14 @@
       </ng-container>
     </ul>
 
-    <div *ngIf="(accountService.currentUser$ | async) as user" class="btn-group">
+    <div *ngIf="accountService.currentUser$ | async as user" class="btn-group">
       <button
         id="button-basic"
         type="button"
         class="btn nav-item dropdown-toggle"
         aria-controls="dropdown-basic"
       >
-        <span class="caret">Welcome {{ user.username | titlecase}}</span>
+        <span class="caret">Welcome {{ user.username | titlecase }}</span>
       </button>
 
       <ul
@@ -61,7 +61,6 @@
 
     <form
       *ngIf="(accountService.currentUser$ | async) === null"
-      
       class="d-flex"
       (ngSubmit)="login()"
       autocomplete="off"
