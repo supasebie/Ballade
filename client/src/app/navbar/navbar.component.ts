@@ -11,11 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class NavbarComponent {
   model: any = {};
 
-  constructor(
-    public accountService: AccountService,
-    private router: Router,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(public accountService: AccountService, private router: Router) {}
 
   logout() {
     this.accountService.logout();

@@ -31,7 +31,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               }
               throw modelStateErrors.flat();
             } else {
-              this.snackBar.open(error.statusText, error.status);
+              this.snackBar.open(error.error, error.status);
             }
             break;
           case 401:

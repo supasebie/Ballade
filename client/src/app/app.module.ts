@@ -2,6 +2,7 @@
 import { AngularCommonModule } from './_modules/angular-common.module';
 import { AngularMaterialModule } from './_modules/angular-material.module';
 import { NpmModule } from './_modules/npm.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Providers and routes
 import { AppRoutingModule } from './app-routing.module';
@@ -9,7 +10,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // Components
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { ListsComponent } from './lists/lists.component';
 import { RegisterComponent } from './register/register.component';
@@ -29,11 +29,13 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { TextInputComponent } from './_forms/text-input/text-input.component';
+import { DateInputComponent } from './_forms/date-input/date-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     HomeComponent,
     RegisterComponent,
     MemberListComponent,
@@ -47,13 +49,17 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     LoginComponent,
     LoginRegisterComponent,
     MemberCardComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    PhotoEditorComponent,
+    TextInputComponent,
+    DateInputComponent
   ],
   imports: [
     AppRoutingModule,
     AngularCommonModule,
     AngularMaterialModule,
-    NpmModule
+    NpmModule,
+    FontAwesomeModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

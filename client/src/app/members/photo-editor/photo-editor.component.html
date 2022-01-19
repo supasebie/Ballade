@@ -1,0 +1,104 @@
+<div fxLayout="column">
+  <div class="container">
+    <div
+      ng2FileDrop
+      [ngClass]="{ 'nv-file-over': hasBaseDropzoneOver }"
+      (fileOver)="fileOverBase($event)"
+      [uploader]="uploader"
+      class="well my-drop-zone"
+    >
+    Drope zone
+    <!-- <mat-card>
+        <mat-card-title>Drop an image here</mat-card-title>
+        <mat-card-content>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions>
+        </mat-card-actions>
+        <mat-card-footer>
+        </mat-card-footer>
+      </mat-card> -->
+    </div>
+
+    <input type="file" ng2FileSelect [uploader]="uploader" />
+
+    <div
+      class="col-md-9"
+      style="margin-bottom: 40px"
+      *ngIf="uploader?.queue?.length"
+    >
+      <h3>Upload queue</h3>
+      <p>Queue length: {{ uploader?.queue?.length }}</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="50%">Name</th>
+            <th>Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of uploader.queue">
+            <td>
+              <strong>{{ item?.file?.name }}</strong>
+            </td>
+            <td *ngIf="uploader.options.isHTML5" nowrap>
+              {{ item?.file?.size / 1024 / 1024 | number: '.2' }} MB
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div>
+        <div>
+          Queue progress:
+          <div class="progress">
+            <mat-progress-bar [value]="uploader.progress"></mat-progress-bar>
+            <mat-progress-bar value="50"></mat-progress-bar>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn btn-success btn-s"
+          (click)="uploader.uploadAll()"
+          [disabled]="!uploader.getNotUploadedItems().length"
+        >
+          <span class="glyphicon glyphicon-upload"></span> Upload all
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning btn-s"
+          (click)="uploader.cancelAll()"
+          [disabled]="!uploader.isUploading"
+        >
+          <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-s"
+          (click)="uploader.clearQueue()"
+          [disabled]="!uploader.queue.length"
+        >
+          <span class="glyphicon glyphicon-trash"></span> Remove all
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <mat-grid-list cols="3">
+      <mat-grid-tile *ngFor="let photo of member.photos">
+        <mat-card style="text-align: center">
+          <img mat-card-md-image src="{{ photo.url }}" />
+          <mat-divider inset></mat-divider>
+          <mat-card-actions>
+            <button (click)="setMain(photo)" mat-button>Main</button>
+            <button (click)="delete(photo.id)" mat-button>
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

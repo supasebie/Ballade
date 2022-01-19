@@ -1,11 +1,8 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
 import { NgModule } from '@angular/core';
 
 const commonModules = [
@@ -13,7 +10,8 @@ const commonModules = [
   HttpClientModule,
   BrowserModule,
   CommonModule,
-  FormsModule
+  FormsModule,
+  ReactiveFormsModule
 ];
 
 @NgModule({
