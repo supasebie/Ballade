@@ -1,0 +1,25 @@
+<mat-form-field>
+  <input
+    [formControl]="$any(ngControl.control)"
+    matInput
+    type="{{ type }}"
+    placeholder="{{ label }}"
+    required
+  />
+  <mat-error *ngIf="ngControl.control.errors?.required">
+    {{label}} is required.
+  </mat-error>
+
+  <mat-error *ngIf="ngControl.control.errors?.minlength">
+    {{label}} must be {{ngControl.control.errors.minlength['requiredLength']}}.
+  </mat-error>
+
+  <mat-error *ngIf="ngControl.control.errors?.maxlength">
+    {{label}} must be {{ngControl.control.errors.maxlength['requiredLength']}}.
+  </mat-error>
+
+  <mat-error *ngIf="ngControl.control.errors?.isMatching">
+    {{label}} does not match.
+  </mat-error>
+</mat-form-field>
+<br>
