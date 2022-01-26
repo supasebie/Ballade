@@ -1,13 +1,81 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center">
+  <h2>Your matches - {{ pagination?.totalItems }}</h2>
+</div>
+<div class="container">
+  <form #form="ngForm" (ngSubmit)="loadMembers()" autocomplete="off">
+    <mat-form-field appearance="fill">
+      <mat-label>Age start</mat-label>
+      <input
+        type="number"
+        name="minAge"
+        [(ngModel)]="userParams.minAge"
+        matInput
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Age end</mat-label>
+      <input
+        type="number"
+        name="maxAge"
+        [(ngModel)]="userParams.maxAge"
+        matInput
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select gender</mat-label>
+      <mat-select
+        [(ngModel)]="userParams.gender"
+        placeholder="Select Gender"
+        name="gender"
+      >
+        <mat-option *ngFor="let gender of genderList" [value]="gender.value">{{
+          gender.display
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Order By</mat-label>
+      <mat-select
+        [(ngModel)]="userParams.orderBy"
+        name="orderBy"
+      >
+        <mat-option
+          *ngFor="let order of orderType | keyvalue"
+          [value]="order.key"
+          >{{ order.key }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-button type="submit">Apply Filters</button>
+    <button (click)="resetFilters()" mat-button type="submit">
+      Reset Filters
+    </button>
+  </form>
+</div>
+<mat-paginator
+  fxLayoutAlign="center"
+  *ngIf="pagination"
+  [length]="pagination.totalItems"
+  [pageSize]="pagination.itemsPerPage"
+  [pageIndex]="pagination.currentPage"
+  (page)="pageChanged($event)"
+>
+</mat-paginator>
 <div class="container" fxLayout="row wrap">
   <div
-  fxFlex="25"
-  fxFlex.md="33"
-  fxFlex.sm="50"
-  fxFlex.xs="100"
-  style="padding: 5px;"
-  *ngFor="let member of members$ |async">
-  <div class="container" fxLayout="column">
-    <app-member-card [member]="member"></app-member-card>
-  </div>
+    fxFlex="25"
+    fxFlex.md="33"
+    fxFlex.sm="50"
+    fxFlex.xs="100"
+    style="padding: 5px"
+    *ngFor="let member of members"
+  >
+    <div class="container" fxLayout="column">
+      <app-member-card [member]="member"></app-member-card>
+    </div>
   </div>
 </div>
