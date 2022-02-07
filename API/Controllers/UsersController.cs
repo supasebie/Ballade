@@ -67,6 +67,7 @@ namespace API.Controllers
             return BadRequest("Failed to update user");
         }
 
+        [Authorize(Roles = "Member")]
         [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
         {
@@ -100,6 +101,7 @@ namespace API.Controllers
             return BadRequest("There was an error uploading your photo");
         }
 
+        [Authorize(Roles = "Member")]
         [HttpDelete("delete-photo/{photoId}")]
         public async Task<ActionResult> DeletePhoto(int photoId)
         {
@@ -130,6 +132,7 @@ namespace API.Controllers
             return BadRequest("Failed to update user");
         }
 
+        [Authorize(Roles = "Member")]
         [HttpPut("set-main-photo/{photoId}")]
         public async Task<ActionResult> SetMainPhoto(int photoId)
         {
