@@ -1,10 +1,14 @@
 <mat-card class="mat-elevation-z4">
   <mat-card-header>
-    <mat-card-title>{{ member.knownAs }} - {{member.age}}</mat-card-title>
+    <mat-card-title>{{ member.knownAs }} - {{ member.age }}</mat-card-title>
   </mat-card-header>
 
   <div class="mat-card-wrapper">
-    <img class="card-image" mat-card-image src="{{ member.photoUrl || './assets/img/user.png' }}" />
+    <img
+      class="card-image"
+      mat-card-image
+      src="{{ member.photoUrl || './assets/img/user.png' }}"
+    />
     <div
       fxLayout="row"
       fxLayoutAlign="space-evenly"
@@ -22,10 +26,16 @@
         mat-fab
         color="warn"
         aria-label="Example icon button with a home icon"
+        routerLink="/members/{{ member.username }}"
+        [queryParams]="{tab: 3}"
       >
-        <mat-icon>home</mat-icon>
+        <mat-icon>mail</mat-icon>
       </button>
-      <button mat-fab aria-label="Example icon button with a heart icon">
+      <button
+        (click)="addLike(member.username)"
+        mat-fab
+        aria-label="Example icon button with a heart icon"
+      >
         <mat-icon>favorite</mat-icon>
       </button>
     </div>

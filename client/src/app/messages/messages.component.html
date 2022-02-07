@@ -1,1 +1,123 @@
-<p>messages works!</p>
+<!-- <div class="container">
+  <mat-paginator
+    fxLayoutAlign="center"
+    *ngIf="pagination"
+    [length]="pagination.totalItems"
+    [pageSize]="pagination.itemsPerPage"
+    [pageIndex]="pagination.currentPage"
+    (page)="pageChanged($event)"
+  >
+  </mat-paginator>
+</div>
+<div class="container">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let message of messages">
+        <th scope="row">{{ message.senderUsername | titlecase}}</th>
+        <td>{{message.dateSent | date}}</td>
+        <td><button class="btn btn-primary">Read</button><button class="btn btn-danger">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+<div fxLayout="row" fxLayoutAlign="center" class="mt-2">
+  <mat-button-toggle-group
+    name="container"
+    aria-label="container"
+    [(ngModel)]="messageParams.container"
+    style="width: 50%"
+  >
+    <mat-button-toggle style="width: 33%" value="unread" (click)="loadMessages(0)"
+      ><fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+      Unread</mat-button-toggle
+    >
+    <mat-button-toggle style="width: 34%" value="inbox" (click)="loadMessages(0)"
+      ><fa-icon [icon]="['far', 'envelope-open']"></fa-icon>
+      Inbox</mat-button-toggle
+    >
+    <mat-button-toggle style="width: 33%" value="outbox" (click)="loadMessages(0)"
+      ><fa-icon [icon]="['fas', 'paper-plane']"></fa-icon>
+      Outbox</mat-button-toggle
+    >
+  </mat-button-toggle-group>
+</div>
+<div fxlayout="row" class="mt-1">
+  <mat-paginator
+    fxLayoutAlign="center"
+    *ngIf="pagination"
+    [length]="pagination.totalItems"
+    [pageSize]="pagination.itemsPerPage"
+    [pageIndex]="pagination.currentPage"
+    (page)="pageChanged($event)"
+  >
+  </mat-paginator>
+<div fxLayout="row" *ngIf="messages?.length === 0">
+  <h3>No messages</h3>
+</div>
+
+<div fxLayout="row" *ngIf="messages?.length > 0">
+  <table class="table table-hover" style="cursor: pointer">
+    <!-- Inbox/Unread -->
+    <tr *ngIf="messageParams.container != 'outbox'">
+      <th style="width: 40%">Message</th>
+      <th style="width: 20%" >
+        From
+      </th>
+      <th style="width: 20%">Recieved</th>
+      <th style="width: 20%"></th>
+    </tr>
+    <!-- end -->
+    <!-- Outbox -->
+    <tr *ngIf="messageParams.container == 'outbox'">
+      <th style="width: 40%">Message</th>
+      <th style="width: 20%" >
+        To
+      </th>
+      <th style="width: 20%">Sent</th>
+      <th style="width: 20%"></th>
+    </tr>
+    <!-- end -->
+    <tr [hidden]="loading"
+      *ngFor="let message of messages"
+      routerLink="{{
+        messageParams.container === 'outbox'
+          ? '/members/' + message.recipientUsername
+          : '/members/' + message.senderUsername
+      }}"
+      [queryParams]="{tab: 3}"
+    >
+      <td>{{ message.content }}</td>
+      <td>
+        <div *ngIf="messageParams.container != 'outbox'">
+          <img
+            class="img-circle rounded-circle mr-2"
+            src="{{ message.senderPhotoUrl }}"
+          />
+          <strong>{{ message.senderUsername | titlecase }}</strong>
+        </div>
+        <div *ngIf="messageParams.container == 'outbox'">
+          <img
+            class="img-circle rounded-circle mr-2"
+            src="{{ message.recipientPhotoUrl }}"
+          />
+          <strong>{{ message.recipientUsername | titlecase }}</strong>
+        </div>
+      </td>
+      <td>
+        {{ message.dateSent | timeago }}
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</div>

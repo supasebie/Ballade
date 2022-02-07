@@ -30,6 +30,8 @@ export class ErrorInterceptor implements HttpInterceptor {
                 }
               }
               throw modelStateErrors.flat();
+            } else if (typeof error.error === 'object') {
+              this.snackBar.open(error.statusText, error.status);
             } else {
               this.snackBar.open(error.error, error.status);
             }

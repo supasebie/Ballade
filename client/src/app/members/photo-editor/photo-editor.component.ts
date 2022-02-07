@@ -5,7 +5,6 @@ import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { environment } from 'src/environments/environment';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MembersService } from 'src/app/_services/members.service';
 import { Photo } from 'src/app/_models/photo';
 
@@ -20,7 +19,6 @@ export class PhotoEditorComponent implements OnInit {
   hasBaseDropzoneOver = false;
   baseUrl = environment.apiUrl;
   user: User;
-  faTrash = faTrash;
 
   constructor(
     private accountService: AccountService,

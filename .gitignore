@@ -287,6 +287,9 @@ FakesAssemblies/
 .ntvs_analysis.dat
 node_modules/
 
+# Angular Tools for Visual Studio
+.angular/
+
 # Visual Studio 6 build log
 *.plg
 

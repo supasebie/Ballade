@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
-
+import { IconsModule } from './_modules/icons.module';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,12 +11,10 @@ import { AccountService } from './_services/account.service';
 export class AppComponent implements OnInit {
   title = 'client';
   users: any;
-  /**
-   *
-   */
   constructor(
     private accountService: AccountService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public iconsModule: IconsModule
   ) {}
 
   ngOnInit() {

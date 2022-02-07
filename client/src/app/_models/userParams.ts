@@ -1,3 +1,4 @@
+import { BaseParams } from './baseParams';
 import { User } from './user';
 
 export const OrderType = {
@@ -6,15 +7,15 @@ export const OrderType = {
   Age: 'age'
 } as const;
 
-export class UserParams {
+export class UserParams extends BaseParams {
   gender: string;
-  minAge = 19;
+  minAge = 0;
   maxAge = 99;
-  pageNumber = 0;
-  pageSize = 5;
   orderBy: string;
+  predicate: string = 'liked';
 
   constructor(user: User) {
+    super();
     this.gender = user.gender === 'female' ? 'male' : 'female';
     this.orderBy = OrderType.LastActive;
   }

@@ -2,8 +2,6 @@
 import { AngularCommonModule } from './_modules/angular-common.module';
 import { AngularMaterialModule } from './_modules/angular-material.module';
 import { NpmModule } from './_modules/npm.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 // Providers and routes
 import { AppRoutingModule } from './app-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -33,7 +31,9 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { TimeagoModule } from 'ngx-timeago';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { IconsModule } from './_modules/icons.module';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,15 +53,17 @@ import { TimeagoModule } from 'ngx-timeago';
     MemberEditComponent,
     PhotoEditorComponent,
     TextInputComponent,
-    DateInputComponent
+    DateInputComponent,
+    MemberMessagesComponent
   ],
   imports: [
     AppRoutingModule,
     AngularCommonModule,
     AngularMaterialModule,
     NpmModule,
-    FontAwesomeModule,
-    TimeagoModule.forRoot()
+    TimeagoModule.forRoot(),
+    NgbModule,
+    IconsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

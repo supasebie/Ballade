@@ -29,13 +29,13 @@
         </div>
 
         <div>
-          <button mat-fab color="accent">
+          <button mat-fab color="accent" (click)="tabGroup.selectedIndex = 3">
             <mat-icon>message</mat-icon>
           </button>
           <button mat-fab color="warn">
             <mat-icon>favorite</mat-icon>
           </button>
-        </div>m
+        </div>
       </mat-card-content>
     </mat-card>
   </div>
@@ -48,7 +48,11 @@
     class="container"
   >
     <div class="container" fxLayout="column">
-      <mat-tab-group mat-align-tabs="center">
+      <mat-tab-group
+        mat-align-tabs="center"
+        #tabGroup
+        [selectedIndex]="selectedIndex"
+      >
         <mat-tab label="About">
           <div
             fxLayout="column"
@@ -130,7 +134,7 @@
         </mat-tab>
 
         <mat-tab label="Messages">
-          <h1>Messages will go here</h1>
+          <app-member-messages [messages]="messages"></app-member-messages>
         </mat-tab>
       </mat-tab-group>
     </div>

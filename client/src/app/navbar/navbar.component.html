@@ -12,7 +12,7 @@
     </div>
 
       <ng-container *ngIf="accountService.currentUser$ | async as user">
-        <img height="55px" width="55px" src="{{ user.photoUrl || './assets/img/user.png' }}">
+        <img height="55px" width="55px" class="rounded mr-2" src="{{ user.photoUrl || './assets/img/user.png' }}">
         <button mat-fab [matMenuTriggerFor]="menu">
           <mat-icon>menu</mat-icon>
         </button>
